@@ -27,8 +27,10 @@ export default function RootLayout({
     <html lang="ko" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased
-          bg-white text-gray-900 dark:bg-gray-900 dark:text-white
-          transition-colors duration-200`}
+          text-white transition-colors duration-200 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-[120px] py-6 sm:py-8 md:py-12 lg:py-16 xl:py-[24px] pb-16 sm:pb-20 md:pb-32 lg:pb-40 xl:pb-[180px]`}
+        style={{
+          background: 'linear-gradient(180deg, #404D61 0.9%, #1D1C25 100%)'
+        }}
       >
         <Providers>{children}</Providers>
       </body>

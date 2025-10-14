@@ -168,19 +168,18 @@ export default function GeneratePage() {
   };
 
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(180deg, #404D61 0.9%, #1D1C25 100%)'}}>
+    <div className="min-h-screen">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[53px] pb-4 sm:pb-6 md:pb-8">
         {/* 페이지 제목과 설명 */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12">
           <h1 
-            className="mb-4"
+            className="mb-4 text-[40px] xl:text-[50px]"
             style={{
               color: '#FFF',
               textShadow: '0 0 10px rgba(255, 255, 255, 0.70)',
               fontFamily: 'Pretendard',
-              fontSize: '50px',
               fontWeight: 700,
               lineHeight: 'normal'
             }}
@@ -188,10 +187,10 @@ export default function GeneratePage() {
             내가 교수님
           </h1>
           <p 
+            className="text-[14px] xl:text-[18px]"
             style={{
               color: '#FFF',
               fontFamily: 'Pretendard',
-              fontSize: '18px',
               fontWeight: 400,
               lineHeight: '140%'
             }}
@@ -200,15 +199,15 @@ export default function GeneratePage() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center" style={{ paddingTop: '77px', paddingBottom: '180px' }}>
+        <div className="flex flex-col items-center xl:pb-[180px]">
           {/* 수업 자료 업로드 섹션 */}
-          <div className="flex px-[50px] py-[30px] flex-col justify-center items-start gap-[43px] self-stretch rounded-[20px]" style={{background: 'rgba(255, 255, 255, 0.10)'}}>
+          <div className="flex w-[318px] min-w-[300px] max-w-[1100px] px-[20px] py-[30px] flex-col gap-[30px] rounded-[20px] xl:w-[1100px] xl:px-[50px] xl:gap-[43px]" style={{background: 'rgba(255, 255, 255, 0.10)'}}>
             <div className="w-full">
               <h2 
+                className="text-[20px] xl:text-[30px]"
                 style={{
                   color: 'rgb(255, 255, 255)',
                   fontFamily: 'Pretendard',
-                  fontSize: '30px',
                   fontWeight: 600,
                   lineHeight: '140%'
                 }}
@@ -217,11 +216,10 @@ export default function GeneratePage() {
               </h2>
 
               <p 
-                className="mb-[43px]"
+                className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-[43px] text-[12px] xl:text-[16px]"
                 style={{
                   color: '#FFF',
                   fontFamily: 'Pretendard',
-                  fontSize: '16px',
                   fontWeight: 400,
                   lineHeight: '140%'
                 }}
@@ -230,7 +228,7 @@ export default function GeneratePage() {
               </p>
 
               <div 
-                className="flex px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
+                className="flex min-w-[260px] max-w-[1000px] px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
                 style={{
                   borderRadius: '20px',
                   border: '1px solid rgba(255, 255, 255, 0.50)',
@@ -252,26 +250,36 @@ export default function GeneratePage() {
                   <img
                     src="/upload.svg"
                     alt="Upload"
-                    width="48"
-                    height="48"
-                    className="mb-4"
+                    className="mb-4 w-[60px] h-[60px] xl:w-[100px] xl:h-[100px]"
                   />
                   <span 
-                    className="mb-[20px]"
+                    className="mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-[20px] text-[14px] xl:text-[16px]"
                     style={{
                       color: '#FFF',
                       textAlign: 'center',
                       fontFamily: 'Pretendard',
-                      fontSize: '16px',
                       fontWeight: 400,
                       lineHeight: '140%'
                     }}
                   >
                     {conceptFileName || '파일 선택하기 (필수)'}
                   </span>
-                  <span className="text-xs text-white">
-                    PDF ✓ PPT ✓ 각 15MB 이하
-                  </span>
+                  <div 
+                    className="flex items-center gap-2"
+                    style={{
+                      color: '#FFF',
+                      fontFamily: 'Pretendard',
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      lineHeight: '140%'
+                    }}
+                  >
+                    <span>PDF</span>
+                    <span style={{color: '#00FF00'}}>✓</span>
+                    <span>PPT</span>
+                    <span style={{color: '#00FF00'}}>✓</span>
+                    <span>각 15MB 이하</span>
+                  </div>
                 </label>
               </div>
             </div>
@@ -279,19 +287,17 @@ export default function GeneratePage() {
 
           {/* 족보 올리기 섹션 */}
           <div 
-            className="flex px-[50px] py-[30px] flex-col justify-center items-start gap-[43px] self-stretch"
+            className="flex w-[318px] min-w-[300px] max-w-[1100px] px-[20px] py-[30px] flex-col gap-[30px] rounded-[20px] mt-[69px] xl:w-[1100px] xl:px-[50px] xl:gap-[43px] xl:mt-[71px]"
             style={{
-              borderRadius: '20px',
-              background: 'rgba(255, 255, 255, 0.10)',
-              marginTop: '71px'
+              background: 'rgba(255, 255, 255, 0.10)'
             }}
           >
             <div className="w-full">
               <h2 
+                className="text-[20px] xl:text-[30px]"
                 style={{
                   color: 'rgb(255, 255, 255)',
                   fontFamily: 'Pretendard',
-                  fontSize: '30px',
                   fontWeight: 600,
                   lineHeight: '140%'
                 }}
@@ -300,11 +306,10 @@ export default function GeneratePage() {
               </h2>
 
               <p 
-                className="mb-[43px]"
+                className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-[43px] text-[12px] xl:text-[16px]"
                 style={{
                   color: '#FFF',
                   fontFamily: 'Pretendard',
-                  fontSize: '16px',
                   fontWeight: 400,
                   lineHeight: '140%'
                 }}
@@ -313,7 +318,7 @@ export default function GeneratePage() {
               </p>
 
               <div 
-                className="flex px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
+                className="flex min-w-[260px] max-w-[1000px] px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
                 style={{
                   borderRadius: '20px',
                   border: '1px solid rgba(255, 255, 255, 0.50)',
@@ -336,26 +341,36 @@ export default function GeneratePage() {
                   <img
                     src="/upload.svg"
                     alt="Upload"
-                    width="48"
-                    height="48"
-                    className="mb-4"
+                    className="mb-4 w-[60px] h-[60px] xl:w-[100px] xl:h-[100px]"
                   />
                   <span 
-                    className="mb-[20px]"
+                    className="mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-[20px] text-[14px] xl:text-[16px]"
                     style={{
                       color: '#FFF',
                       textAlign: 'center',
                       fontFamily: 'Pretendard',
-                      fontSize: '16px',
                       fontWeight: 400,
                       lineHeight: '140%'
                     }}
                   >
                     {formatFileName || '파일 선택하기 (선택)'}
                   </span>
-                  <span className="text-xs text-white">
-                    PDF ✓ PPT ✓ 각 15MB 이하
-                  </span>
+                  <div 
+                    className="flex items-center gap-2"
+                    style={{
+                      color: '#FFF',
+                      fontFamily: 'Pretendard',
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      lineHeight: '140%'
+                    }}
+                  >
+                    <span>PDF</span>
+                    <span style={{color: '#00FF00'}}>✓</span>
+                    <span>PPT</span>
+                    <span style={{color: '#00FF00'}}>✓</span>
+                    <span>각 15MB 이하</span>
+                  </div>
                 </label>
               </div>
             </div>
@@ -364,20 +379,17 @@ export default function GeneratePage() {
           {/* 문제 생성하기 버튼 */}
           <button
             type="button"
-            className={`flex w-[616px] p-[30px] justify-center items-center gap-[8px] rounded-[20px] transition relative ${
+            className={`flex w-[280px] h-[60px] xl:w-[616px] xl:h-auto p-[30px] justify-center items-center gap-[8px] flex-shrink-0 rounded-[12px] xl:rounded-[20px] transition relative mt-[69px] xl:mt-[107px] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[30px] shadow-[0_0_10px_0_#20212B] xl:shadow-[0_0_20px_0_#20212B] ${
               isLoading 
                 ? 'cursor-not-allowed'
                 : 'hover:opacity-90'
             }`}
             style={{
               background: 'rgba(72, 86, 105, 0.80)',
-              boxShadow: '0 0 20px 0 #20212B',
               color: '#FFF',
               fontFamily: 'Pretendard',
-              fontSize: '30px',
               fontWeight: 600,
-              lineHeight: '140%',
-              marginTop: '107px'
+              lineHeight: '140%'
             }}
             onClick={handleGenerate}
             disabled={isLoading}
