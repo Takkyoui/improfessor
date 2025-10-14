@@ -44,61 +44,141 @@ export default function ResultPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white shadow rounded-lg">
-          <div className="px-6 py-8">
-            <div className="flex justify-between items-center mb-8">
-              <h1 className="text-2xl font-bold text-black">
+      <main className="flex flex-col items-center pt-[52px] xl:max-w-7xl xl:mx-auto xl:px-[50px] xl:pt-[77px]">
+        <div className="flex w-[318px] min-w-[300px] max-w-[1100px] px-[20px] py-[30px] flex-col gap-[30px] rounded-[20px] xl:w-auto xl:px-8 xl:py-8" style={{background: 'rgba(255, 255, 255, 0.10)'}}>
+          <div>
+            <div className="flex max-w-[1008px] justify-between items-center self-stretch mb-8">
+              <h1 
+                className="text-[20px] xl:text-[30px]"
+                style={{
+                  color: '#FFF',
+                  fontFamily: 'Pretendard',
+                  fontWeight: 600,
+                  lineHeight: '140%'
+                }}
+              >
                 생성된 문제
               </h1>
               <button
                 onClick={handleDownload}
                 disabled={isLoading || !problems.length}
-                className={`px-4 py-2 rounded-md transition-colors ${
+                className={`hidden xl:flex px-[14px] py-[8px] justify-center items-center gap-[8px] rounded-[10px] transition-opacity ${
                   isLoading
-                    ? 'bg-gray-300 cursor-not-allowed'
-                    : 'bg-[#D9EAFD] hover:bg-[#BCCCDC]'
-                } text-black`}
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'hover:opacity-80'
+                }`}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.80)',
+                  color: '#405348',
+                  fontFamily: 'Pretendard',
+                  fontSize: '20px',
+                  fontWeight: 600,
+                  lineHeight: '140%'
+                }}
               >
                 {isLoading ? '다운로드 중...' : 'PDF 다운로드'}
               </button>
             </div>
 
-            <div className="space-y-6">
+            <div className="flex flex-col gap-[43px]">
               {problems.map((problem) => (
                 <div
                   key={problem.number}
-                  className="border border-[#BCCCDC] rounded-lg p-6"
+                  className="flex max-w-[1008px] px-[20px] py-[30px] flex-col justify-center items-start gap-[20px] self-stretch rounded-[10px] xl:p-[30px] xl:gap-[24px]"
+                  style={{
+                    border: '1px solid rgba(255, 255, 255, 0.50)',
+                    background: 'rgba(255, 255, 255, 0.10)'
+                  }}
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-lg font-semibold text-black">
-                      문제 {problem.number}
-                    </h3>
-                  </div>
+                  <h3 
+                    className="text-[18px] xl:text-[20px]"
+                    style={{
+                      color: '#FFF',
+                      fontFamily: 'Pretendard',
+                      fontWeight: 600,
+                      lineHeight: '140%'
+                    }}
+                  >
+                    문제 {problem.number}
+                  </h3>
                   
-                  <div className="space-y-4">
+                  <div className="flex flex-col gap-[24px] w-full">
                     <div>
-                      <h4 className="font-medium text-black mb-2">문제 내용</h4>
-                      <p className="text-gray-700 whitespace-pre-wrap">
+                      <h4 
+                        className="mb-2 text-[16px] xl:text-[18px]"
+                        style={{
+                          color: '#FFF',
+                          fontFamily: 'Pretendard',
+                          fontWeight: 600,
+                          lineHeight: '140%'
+                        }}
+                      >
+                        문제 내용
+                      </h4>
+                      <p 
+                        className="whitespace-pre-wrap text-[14px] xl:text-[16px]"
+                        style={{
+                          color: '#FFF',
+                          fontFamily: 'Pretendard',
+                          fontWeight: 400,
+                          lineHeight: '140%'
+                        }}
+                      >
                         {problem.content}
                       </p>
                     </div>
 
                     {problem.description && (
                       <div>
-                        <h4 className="font-medium text-black mb-2">설명</h4>
-                        <p className="text-gray-700 whitespace-pre-wrap">
+                        <h4 
+                          className="mb-2 text-[16px] xl:text-[18px]"
+                          style={{
+                            color: '#FFF',
+                            fontFamily: 'Pretendard',
+                            fontWeight: 600,
+                            lineHeight: '140%'
+                          }}
+                        >
+                          설명
+                        </h4>
+                        <p 
+                          className="whitespace-pre-wrap text-[14px] xl:text-[16px]"
+                          style={{
+                            color: '#FFF',
+                            fontFamily: 'Pretendard',
+                            fontWeight: 400,
+                            lineHeight: '140%'
+                          }}
+                        >
                           {problem.description}
                         </p>
                       </div>
                     )}
 
                     <div>
-                      <h4 className="font-medium text-black mb-2">정답</h4>
-                      <p className="text-gray-700 whitespace-pre-wrap">
+                      <h4 
+                        className="mb-2 text-[16px] xl:text-[18px]"
+                        style={{
+                          color: '#FFF',
+                          fontFamily: 'Pretendard',
+                          fontWeight: 600,
+                          lineHeight: '140%'
+                        }}
+                      >
+                        정답
+                      </h4>
+                      <p 
+                        className="whitespace-pre-wrap text-[14px] xl:text-[16px]"
+                        style={{
+                          color: '#FFF',
+                          fontFamily: 'Pretendard',
+                          fontWeight: 400,
+                          lineHeight: '140%'
+                        }}
+                      >
                         {problem.answer}
                       </p>
                     </div>
@@ -106,16 +186,26 @@ export default function ResultPage() {
                 </div>
               ))}
             </div>
-
-            <div className="mt-8 text-center">
-              <button
-                onClick={() => router.push('/generate')}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                새로운 문제 생성하기
-              </button>
-            </div>
           </div>
+        </div>
+
+        <div className="py-[50px] xl:py-[77px] text-center">
+          <button
+            onClick={() => router.push('/generate')}
+            className="hover:opacity-70 transition-opacity text-[14px] xl:text-[20px]"
+            style={{
+              color: '#FFF',
+              fontFamily: 'Pretendard',
+              fontWeight: 600,
+              lineHeight: '140%',
+              textDecoration: 'underline',
+              textDecorationStyle: 'solid',
+              textDecorationSkipInk: 'none',
+              textUnderlineOffset: '25%'
+            }}
+          >
+            새로운 문제 생성하기
+          </button>
         </div>
       </main>
     </div>
