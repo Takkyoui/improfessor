@@ -173,7 +173,7 @@ export default function GeneratePage() {
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[53px] pb-4 sm:pb-6 md:pb-8">
         {/* 페이지 제목과 설명 */}
-        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+        <div className="text-center mb-[44px] xl:mb-[71px]">
           <h1 
             className="mb-4 text-[40px] xl:text-[50px]"
             style={{
@@ -201,8 +201,9 @@ export default function GeneratePage() {
 
         <div className="flex flex-col items-center xl:pb-[180px]">
           {/* 수업 자료 업로드 섹션 */}
-          <div className="flex w-[318px] min-w-[300px] max-w-[1100px] px-[20px] py-[30px] flex-col gap-[30px] rounded-[20px] xl:w-[1100px] xl:px-[50px] xl:gap-[43px]" style={{background: 'rgba(255, 255, 255, 0.10)'}}>
-            <div className="w-full">
+          <div className="flex w-[318px] min-w-[300px] max-w-[1100px] px-[20px] py-[30px] flex-col gap-[30px] xl:w-[1100px] xl:px-[50px] xl:py-[30px] xl:gap-[43px]" style={{background: 'rgba(255, 255, 255, 0.10)', borderRadius: '20px'}}>
+            {/* 제목과 설명 */}
+            <div className="flex w-[280px] flex-col items-start gap-[7px] xl:w-auto">
               <h2 
                 className="text-[20px] xl:text-[30px]"
                 style={{
@@ -216,7 +217,7 @@ export default function GeneratePage() {
               </h2>
 
               <p 
-                className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-[43px] text-[12px] xl:text-[16px]"
+                className="text-[12px] xl:text-[16px]"
                 style={{
                   color: '#FFF',
                   fontFamily: 'Pretendard',
@@ -226,15 +227,17 @@ export default function GeneratePage() {
               >
                 문제를 만들어 드릴까요? 개념 학습 자료를 업로드 해주세요
               </p>
+            </div>
 
-              <div 
-                className="flex min-w-[260px] max-w-[1000px] px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
-                style={{
-                  borderRadius: '20px',
-                  border: '1px solid rgba(255, 255, 255, 0.50)',
-                  background: 'rgba(255, 255, 255, 0.10)'
-                }}
-              >
+            {/* 업로드 박스 */}
+            <div 
+              className="flex min-w-[260px] max-w-[1000px] px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
+              style={{
+                borderRadius: '20px',
+                border: '1px solid rgba(255, 255, 255, 0.50)',
+                background: 'rgba(255, 255, 255, 0.10)'
+              }}
+            >
                 <input
                   type="file"
                   accept=".pdf,.ppt,.pptx"
@@ -265,11 +268,10 @@ export default function GeneratePage() {
                     {conceptFileName || '파일 선택하기 (필수)'}
                   </span>
                   <div 
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 text-[12px] xl:text-[16px]"
                     style={{
                       color: '#FFF',
                       fontFamily: 'Pretendard',
-                      fontSize: '16px',
                       fontWeight: 400,
                       lineHeight: '140%'
                     }}
@@ -282,17 +284,18 @@ export default function GeneratePage() {
                   </div>
                 </label>
               </div>
-            </div>
           </div>
 
           {/* 족보 올리기 섹션 */}
           <div 
-            className="flex w-[318px] min-w-[300px] max-w-[1100px] px-[20px] py-[30px] flex-col gap-[30px] rounded-[20px] mt-[69px] xl:w-[1100px] xl:px-[50px] xl:gap-[43px] xl:mt-[71px]"
+            className="flex w-[318px] min-w-[300px] max-w-[1100px] px-[20px] py-[30px] flex-col gap-[30px] mt-[66.75px] xl:w-[1100px] xl:px-[50px] xl:py-[30px] xl:gap-[43px] xl:mt-[71px]"
             style={{
-              background: 'rgba(255, 255, 255, 0.10)'
+              background: 'rgba(255, 255, 255, 0.10)',
+              borderRadius: '20px'
             }}
           >
-            <div className="w-full">
+            {/* 제목과 설명 */}
+            <div className="flex w-[280px] flex-col items-start gap-[7px] xl:w-auto">
               <h2 
                 className="text-[20px] xl:text-[30px]"
                 style={{
@@ -306,7 +309,7 @@ export default function GeneratePage() {
               </h2>
 
               <p 
-                className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-[43px] text-[12px] xl:text-[16px]"
+                className="text-[12px] xl:text-[16px]"
                 style={{
                   color: '#FFF',
                   fontFamily: 'Pretendard',
@@ -316,15 +319,17 @@ export default function GeneratePage() {
               >
                 유사한 스타일로 만들어 드릴까요? 원하는 문제 유형 자료를 업로드 해주세요
               </p>
+            </div>
 
-              <div 
-                className="flex min-w-[260px] max-w-[1000px] px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
-                style={{
-                  borderRadius: '20px',
-                  border: '1px solid rgba(255, 255, 255, 0.50)',
-                  background: 'rgba(255, 255, 255, 0.10)'
-                }}
-              >
+            {/* 업로드 박스 */}
+            <div 
+              className="flex min-w-[260px] max-w-[1000px] px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
+              style={{
+                borderRadius: '20px',
+                border: '1px solid rgba(255, 255, 255, 0.50)',
+                background: 'rgba(255, 255, 255, 0.10)'
+              }}
+            >
                 <input
                   type="file"
                   accept=".pdf,.ppt,.pptx"
@@ -356,11 +361,10 @@ export default function GeneratePage() {
                     {formatFileName || '파일 선택하기 (선택)'}
                   </span>
                   <div 
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 text-[12px] xl:text-[16px]"
                     style={{
                       color: '#FFF',
                       fontFamily: 'Pretendard',
-                      fontSize: '16px',
                       fontWeight: 400,
                       lineHeight: '140%'
                     }}
@@ -373,13 +377,12 @@ export default function GeneratePage() {
                   </div>
                 </label>
               </div>
-            </div>
           </div>
 
           {/* 문제 생성하기 버튼 */}
           <button
             type="button"
-            className={`flex w-[280px] h-[60px] xl:w-[616px] xl:h-auto p-[30px] justify-center items-center gap-[8px] flex-shrink-0 rounded-[12px] xl:rounded-[20px] transition relative mt-[69px] xl:mt-[107px] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[30px] shadow-[0_0_10px_0_#20212B] xl:shadow-[0_0_20px_0_#20212B] ${
+            className={`flex w-[280px] h-[60px] xl:w-[616px] xl:h-auto p-[30px] justify-center items-center gap-[8px] flex-shrink-0 rounded-[12px] xl:rounded-[20px] transition relative mt-[66.75px] xl:mt-[107px] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[30px] shadow-[0_0_10px_0_#20212B] xl:shadow-[0_0_20px_0_#20212B] ${
               isLoading 
                 ? 'cursor-not-allowed'
                 : 'hover:opacity-90'
