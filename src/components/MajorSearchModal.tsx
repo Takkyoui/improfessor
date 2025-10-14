@@ -129,13 +129,13 @@ export default function MajorSearchModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-hidden shadow-xl">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-black">학과 검색</h2>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="flex w-full lg:w-[650px] p-6 lg:p-10 flex-col justify-center items-center rounded-[20px] bg-black/85 shadow-[0_0_4px_0_rgba(255,255,255,0.25)] backdrop-blur-[2px] max-h-[80vh] overflow-hidden">
+        <div className="flex justify-between items-center w-full mb-[19px]">
+          <h2 className="text-xl font-bold text-white">학과 검색</h2>
           <button
             onClick={handleClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-400 hover:text-white transition"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -144,36 +144,43 @@ export default function MajorSearchModal({
         </div>
 
         {/* 선택된 대학교 표시 */}
-        <div className="mb-4 p-3 bg-[#D9EAFD] rounded-lg">
-          <p className="text-sm text-black">
+        <div className="w-full p-3 bg-white/20 rounded-[10px] mb-[19px]">
+          <p className="text-sm text-white">
             선택된 대학교: <span className="font-semibold">{selectedUniversity}</span>
           </p>
         </div>
 
         {/* 검색 입력 */}
-        <div className="flex gap-2 mb-4">
+        <div className="flex gap-[19px] w-full mb-[50px]">
           <input
             type="text"
             value={searchKeyword}
             onChange={(e) => setSearchKeyword(e.target.value)}
             placeholder="학과명을 입력하세요"
-            className="flex-1 px-4 py-2 border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-gray-500"
+            className="flex flex-1 h-[41px] px-[14px] py-2 items-center gap-2 text-white rounded-[10px] border border-white/60 bg-white/30 focus:outline-none placeholder-white/60"
             onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
           />
           <button
             onClick={handleSearch}
             disabled={isLoading}
-            className="px-6 py-2 bg-[#D9EAFD] text-black rounded-lg hover:bg-[#BCCCDC] transition disabled:opacity-50"
+            className="flex h-[41px] px-6 justify-center items-center text-white rounded-[10px] bg-white/30 hover:bg-white/40 transition disabled:opacity-50"
           >
             {isLoading ? '검색 중...' : '검색'}
           </button>
         </div>
 
+        {/* 검색 결과가 없을 때 기본 메시지 */}
+        {!isLoading && majors.length === 0 && !searchKeyword && (
+          <div>
+            <p className="text-white/60">검색 결과가 없습니다.</p>
+          </div>
+        )}
+
         {/* 결과 목록 */}
-        <div className="overflow-y-auto max-h-96">
+        <div className="overflow-y-auto max-h-96 w-full">
           {isLoading ? (
             <div className="text-center py-8">
-              <p className="text-gray-500">검색 중...</p>
+              <p className="text-white/60">검색 중...</p>
             </div>
           ) : (
             <div className="space-y-2">
@@ -181,16 +188,16 @@ export default function MajorSearchModal({
                 <div
                   key={major.kediMjrId}
                   onClick={() => handleMajorSelect(major)}
-                  className="p-3 border border-[#BCCCDC] rounded-lg hover:bg-[#D9EAFD] cursor-pointer transition"
+                  className="p-3 border border-white/30 rounded-[10px] hover:bg-white/20 cursor-pointer transition text-white"
                 >
-                  <div className="font-semibold text-black">{major.korMjrNm}</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="font-semibold text-white">{major.korMjrNm}</div>
+                  <div className="text-sm text-white/70">
                     {major.clgNm} • {major.pbnfDgriCrseDivNm} • {major.lsnTrmNm}
                   </div>
                 </div>
               ))}
               {majors.length === 0 && (
-                <p className="text-center py-8 text-gray-500">학과 정보가 없습니다.</p>
+                <p className="text-center py-8 text-white/60">학과 정보가 없습니다.</p>
               )}
             </div>
           )}
@@ -198,7 +205,7 @@ export default function MajorSearchModal({
 
         {/* 결과 개수 */}
         {totalCount > 0 && (
-          <div className="mt-4 text-sm text-gray-500 text-center">
+          <div className="text-sm text-white/60 text-center">
             총 {totalCount}개의 결과
           </div>
         )}

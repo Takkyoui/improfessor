@@ -8,7 +8,8 @@ import useAuth from "@/hooks/useAuth";
 import { useAlert } from "@/context/AlertContext";
 import { AxiosError } from "axios";
 import { ApiResponse } from "@/types/auth";
-import MyAccountSection from "@/components/MyAccountSection";
+import MyAccountSectionMobile from "@/components/MyAccountSectionMobile";
+import MyAccountSectionPC from "@/components/MyAccountSectionPC";
 import PromotionSection from "@/components/PromotionSection";
 
 export default function MyPage() {
@@ -90,22 +91,33 @@ export default function MyPage() {
     <div className="min-h-screen">
       <Header />
 
-      <main className="max-w-xl mx-auto px-4 sm:px-6 lg:px-0 py-12">
-        {/* 내 계정 섹션 */}
-        <MyAccountSection />
+      <main className="w-full max-w-[1200px] mx-auto py-16 lg:py-[77px]">
+        <div className="max-w-xl">
+          {/* 내 계정 섹션 - 모바일 */}
+          <div className="lg:hidden">
+            <MyAccountSectionMobile />
+          </div>
+          
+          {/* 내 계정 섹션 - PC */}
+          <div className="hidden lg:block">
+            <MyAccountSectionPC />
+          </div>
 
-        {/* 프로모션 섹션 */}
-        <PromotionSection />
+          {/* 프로모션 섹션 */}
+          <PromotionSection />
+        </div>
 
-        {/* 계정 탈퇴 */}
-        <button
-          type="button"
-          onClick={handleDeleteUser}
-          disabled={deleteUser.isPending}
-          className="flex w-[300px] lg:w-[328px] h-[41px] px-[24.957px] justify-center items-center flex-shrink-0 text-white font-pretendard text-base font-semibold leading-[150%] rounded-[10px] bg-black shadow-[0_0_10px_0_rgba(255,255,255,0.70)] hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed mt-12"
-        >
-          {deleteUser.isPending ? "처리 중..." : "계정 탈퇴"}
-        </button>
+        {/* 계정 탈퇴 - 전체 화면 중앙 */}
+        <div className="flex justify-center mt-[130px] lg:mt-[140px]">
+          <button
+            type="button"
+            onClick={handleDeleteUser}
+            disabled={deleteUser.isPending}
+            className="flex w-[300px] lg:w-[328px] h-[41px] px-[24.957px] justify-center items-center flex-shrink-0 text-white font-pretendard text-base font-semibold leading-[150%] rounded-[10px] bg-black shadow-[0_0_10px_0_rgba(255,255,255,0.70)] hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {deleteUser.isPending ? "처리 중..." : "계정 탈퇴"}
+          </button>
+        </div>
       </main>
     </div>
   );

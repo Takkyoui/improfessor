@@ -57,41 +57,46 @@ export default function PromotionSection() {
   };
 
   return (
-    <div className="mt-12 pt-8 border-t border-[#444444] space-y-6">
-      <h2 className="text-xl font-semibold text-white">프로모션</h2>
-      <p className="text-white">
+    <div className="mt-12 space-y-6">
+      {/* 구분선 */}
+      <hr className="w-full h-px bg-white/50" />
+      <h2 className="text-white font-pretendard text-[20px] lg:text-[30px] font-semibold leading-[140%]">프로모션</h2>
+      <p className="text-white font-pretendard text-xs lg:text-lg font-normal leading-[140%]">
         친구를 추천하여 최대 99회의 무료 생성 횟수를 받으세요!<br />
         친구가 내 추천인 코드를 입력하면 친구는 3회, 나는 3회의 무료 생성 횟수를 받습니다.<br />
         추천인 코드 입력은 1회만 가능하고, 추천받는 것은 최대 33회까지 가능합니다.
       </p>
 
-      {/* 내 추천인 코드 */}
-      <div className="flex p-5 justify-center items-center gap-8 rounded-[10px] border border-white">
-        <span className="text-white font-pretendard text-lg font-normal leading-[140%]">내 추천인 코드</span>
-        <span className="text-white font-pretendard text-[30px] font-semibold leading-[140%]">{user.nickname}</span>
-      </div>
-
-      {/* 추천인 코드 입력 */}
-      <div className="space-y-2">
-        <label className="block text-sm font-medium text-white">추천인 코드 입력</label>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={inputReferral}
-            onChange={(e) => setInputReferral(e.target.value)}
-            placeholder="추천인 코드"
-            className="w-full px-4 py-2 border border-[#444444] rounded focus:ring-2 focus:ring-[#666666] focus:border-transparent text-white"
-          />
-          <button
-            type="button"
-            onClick={handleReferralSubmit}
-            disabled={updateUser.isPending || !inputReferral.trim()}
-            className="px-4 py-2 border border-[#444444] text-white rounded hover:border-[#666666] transition whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {updateUser.isPending ? "처리 중..." : "입력"}
-          </button>
+      {/* 추천인 코드 섹션 - 반응형 배치 */}
+      <div className="flex flex-col lg:flex-row lg:items-center lg:align-content-center lg:gap-[40px_193px] lg:self-stretch lg:flex-wrap">
+        {/* 내 추천인 코드 */}
+        <div className="flex p-5 justify-center items-center gap-8 rounded-[10px] border border-white">
+          <span className="text-white font-pretendard text-lg font-normal leading-[140%]">내 추천인 코드</span>
+          <span className="text-white font-pretendard text-[30px] font-semibold leading-[140%]">{user.nickname}</span>
         </div>
-        <p className="text-xs text-white">문제 생성 횟수가 1회 추가됩니다. (1회만 가능)</p>
+
+        {/* 추천인 코드 입력 */}
+        <div className="flex flex-col gap-2">
+          <label className="text-white font-pretendard text-sm lg:text-lg font-normal leading-[140%]">추천인 코드 입력</label>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={inputReferral}
+              onChange={(e) => setInputReferral(e.target.value)}
+              placeholder="추천인 코드를 입력하세요"
+              className="flex w-[200px] lg:w-[328px] h-[41px] px-[14px] py-2 items-center gap-2 flex-shrink-0 text-white rounded-[10px] border border-white/60 bg-white/30 focus:outline-none"
+            />
+            <button
+              type="button"
+              onClick={handleReferralSubmit}
+              disabled={updateUser.isPending || !inputReferral.trim()}
+              className="inline-flex h-[41px] px-4 lg:px-6 justify-center items-center flex-shrink-0 text-white rounded-[10px] bg-white/30 hover:bg-white/40 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base"
+            >
+              {updateUser.isPending ? "처리 중..." : "입력"}
+            </button>
+          </div>
+          <p className="text-white font-pretendard text-xs font-normal leading-[140%] text-right">문제 생성 횟수가 1회 추가됩니다. (1회만 가능)</p>
+        </div>
       </div>
     </div>
   );
