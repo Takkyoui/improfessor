@@ -106,22 +106,22 @@ export default function Header() {
 
               {/* 드롭다운 메뉴 */}
               {isProfileOpen && (
-                <div className="absolute right-0 mt-2 bg-white rounded-md shadow-lg border border-[#BCCCDC] inline-flex py-[10px] flex-col justify-center items-center">
+                <div className="absolute right-0 mt-5 rounded-[10px] bg-[rgba(50,116,239,0.04)] shadow-[0_0_4px_0_rgba(0,0,0,0.25)] inline-flex flex-col justify-center items-center z-50">
                   {user && (
-                    <div className="border-b border-[#BCCCDC] flex w-[200px] px-[20px] py-[10px] flex-col justify-center items-start">
-                      <div className="font-medium text-gray-500 text-xs">{user.email}</div>
-                      <div className="text-gray-500 text-xs">무료 생성: {user.freeCount}회</div>
+                    <div className="border-b border-white/20 flex w-[200px] px-[20px] py-[10px] flex-col justify-center items-start">
+                      <div className="font-medium text-white/70 text-xs">{user.email}</div>
+                      <div className="text-white/70 text-xs">무료 생성: {user.freeCount}회</div>
                     </div>
                   )}
                   <Link
                     href="/mypage"
-                    className="block w-full flex p-[20px] items-center gap-[8px] self-stretch text-white text-lg font-semibold leading-[140%] font-[Pretendard]"
+                    className="flex p-[20px] items-center gap-[8px] self-stretch text-white text-lg font-semibold leading-[140%] font-[Pretendard]"
                     onClick={() => setIsProfileOpen(false)}
                   >
                     마이페이지
                   </Link>
                   <button
-                    className="block w-full text-left disabled:opacity-50 flex p-[20px] items-center gap-[8px] self-stretch text-white text-lg font-semibold leading-[140%] font-[Pretendard]"
+                    className="w-full text-left disabled:opacity-50 flex p-[20px] items-center gap-[8px] self-stretch text-white text-lg font-semibold leading-[140%] font-[Pretendard]"
                     onClick={handleLogout}
                     disabled={logoutMutation.isPending}
                   >
