@@ -9,7 +9,7 @@ export default function Home() {
   const { showAlert } = useAlert();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#D9EAFD] to-[#F8FAFC] relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#D9EAFD] to-[#F8FAFC] relative -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-32 xl:-mx-[120px] -my-6 sm:-my-8 md:-my-12 lg:-my-16 xl:-my-[24px] -mb-16 sm:-mb-20 md:-mb-32 lg:-mb-40 xl:-mb-[180px]">
       <div 
         className="absolute inset-0 w-full h-full"
         style={{
