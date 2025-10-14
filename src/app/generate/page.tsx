@@ -168,33 +168,75 @@ export default function GeneratePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen" style={{background: 'linear-gradient(180deg, #404D61 0.9%, #1D1C25 100%)'}}>
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 페이지 제목과 설명 */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-black mb-4">
+          <h1 
+            className="mb-4"
+            style={{
+              color: '#FFF',
+              textShadow: '0 0 10px rgba(255, 255, 255, 0.70)',
+              fontFamily: 'Pretendard',
+              fontSize: '50px',
+              fontWeight: 700,
+              lineHeight: 'normal'
+            }}
+          >
             내가 교수님
           </h1>
-          <p className="text-lg text-black">
+          <p 
+            style={{
+              color: '#FFF',
+              fontFamily: 'Pretendard',
+              fontSize: '18px',
+              fontWeight: 400,
+              lineHeight: '140%'
+            }}
+          >
             자료 업로드 후 문제 생성하기 버튼을 눌러주세요
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="flex flex-col items-center" style={{ paddingTop: '77px', paddingBottom: '180px' }}>
           {/* 수업 자료 업로드 섹션 */}
-          <div className="bg-white shadow">
-            <div className="px-6 py-8">
-              <h2 className="text-2xl font-bold text-black mb-4">
+          <div className="flex px-[50px] py-[30px] flex-col justify-center items-start gap-[43px] self-stretch rounded-[20px]" style={{background: 'rgba(255, 255, 255, 0.10)'}}>
+            <div className="w-full">
+              <h2 
+                style={{
+                  color: 'rgb(255, 255, 255)',
+                  fontFamily: 'Pretendard',
+                  fontSize: '30px',
+                  fontWeight: 600,
+                  lineHeight: '140%'
+                }}
+              >
                 수업 자료 업로드 (필수)
               </h2>
 
-              <p className="text-black mb-8">
+              <p 
+                className="mb-[43px]"
+                style={{
+                  color: '#FFF',
+                  fontFamily: 'Pretendard',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  lineHeight: '140%'
+                }}
+              >
                 문제를 만들어 드릴까요? 개념 학습 자료를 업로드 해주세요
               </p>
 
-              <div className="bg-[#F8FAFC] p-6 text-center border border-[#BCCCDC] rounded-lg">
+              <div 
+                className="flex px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
+                style={{
+                  borderRadius: '20px',
+                  border: '1px solid rgba(255, 255, 255, 0.50)',
+                  background: 'rgba(255, 255, 255, 0.10)'
+                }}
+              >
                 <input
                   type="file"
                   accept=".pdf,.ppt,.pptx"
@@ -207,44 +249,28 @@ export default function GeneratePage() {
                   htmlFor="concept-upload"
                   className="inline-flex flex-col items-center cursor-pointer"
                 >
-                  <svg
+                  <img
+                    src="/upload.svg"
+                    alt="Upload"
                     width="48"
                     height="48"
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
                     className="mb-4"
+                  />
+                  <span 
+                    className="mb-[20px]"
+                    style={{
+                      color: '#FFF',
+                      textAlign: 'center',
+                      fontFamily: 'Pretendard',
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      lineHeight: '140%'
+                    }}
                   >
-                    <path
-                      d="M24 32V16M16 24L24 16L32 24"
-                      stroke="#666"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M8 32H40"
-                      stroke="#666"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <rect
-                      x="8"
-                      y="8"
-                      width="32"
-                      height="32"
-                      rx="4"
-                      stroke="#666"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span className="text-sm text-black mb-2">
                     {conceptFileName || '파일 선택하기 (필수)'}
                   </span>
-                  <span className="text-xs text-black">
-                    (pdf, ppt 파일만 가능, 각 15MB 이하)
+                  <span className="text-xs text-white">
+                    PDF ✓ PPT ✓ 각 15MB 이하
                   </span>
                 </label>
               </div>
@@ -252,17 +278,48 @@ export default function GeneratePage() {
           </div>
 
           {/* 족보 올리기 섹션 */}
-          <div className="bg-white shadow">
-            <div className="px-6 py-8">
-              <h2 className="text-2xl font-bold text-black mb-4">
+          <div 
+            className="flex px-[50px] py-[30px] flex-col justify-center items-start gap-[43px] self-stretch"
+            style={{
+              borderRadius: '20px',
+              background: 'rgba(255, 255, 255, 0.10)',
+              marginTop: '71px'
+            }}
+          >
+            <div className="w-full">
+              <h2 
+                style={{
+                  color: 'rgb(255, 255, 255)',
+                  fontFamily: 'Pretendard',
+                  fontSize: '30px',
+                  fontWeight: 600,
+                  lineHeight: '140%'
+                }}
+              >
                 족보 올리기 (선택)
               </h2>
 
-              <p className="text-black mb-8">
+              <p 
+                className="mb-[43px]"
+                style={{
+                  color: '#FFF',
+                  fontFamily: 'Pretendard',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  lineHeight: '140%'
+                }}
+              >
                 유사한 스타일로 만들어 드릴까요? 원하는 문제 유형 자료를 업로드 해주세요
               </p>
 
-              <div className="bg-[#F8FAFC] p-6 text-center border border-[#BCCCDC] rounded-lg">
+              <div 
+                className="flex px-0 py-[30px] flex-col justify-center items-center gap-[20px] self-stretch text-center"
+                style={{
+                  borderRadius: '20px',
+                  border: '1px solid rgba(255, 255, 255, 0.50)',
+                  background: 'rgba(255, 255, 255, 0.10)'
+                }}
+              >
                 <input
                   type="file"
                   accept=".pdf,.ppt,.pptx"
@@ -276,44 +333,28 @@ export default function GeneratePage() {
                   className="inline-flex flex-col items-center cursor-pointer"
                   onClick={handleFormatFileClick}
                 >
-                  <svg
+                  <img
+                    src="/upload.svg"
+                    alt="Upload"
                     width="48"
                     height="48"
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
                     className="mb-4"
+                  />
+                  <span 
+                    className="mb-[20px]"
+                    style={{
+                      color: '#FFF',
+                      textAlign: 'center',
+                      fontFamily: 'Pretendard',
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      lineHeight: '140%'
+                    }}
                   >
-                    <path
-                      d="M24 32V16M16 24L24 16L32 24"
-                      stroke="#666"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M8 32H40"
-                      stroke="#666"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <rect
-                      x="8"
-                      y="8"
-                      width="32"
-                      height="32"
-                      rx="4"
-                      stroke="#666"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span className="text-sm text-black mb-2">
                     {formatFileName || '파일 선택하기 (선택)'}
                   </span>
-                  <span className="text-xs text-black">
-                    (pdf, ppt 파일만 가능, 각 15MB 이하)
+                  <span className="text-xs text-white">
+                    PDF ✓ PPT ✓ 각 15MB 이하
                   </span>
                 </label>
               </div>
@@ -323,18 +364,28 @@ export default function GeneratePage() {
           {/* 문제 생성하기 버튼 */}
           <button
             type="button"
-            className={`w-full py-4 text-lg font-medium transition relative ${
+            className={`flex w-[616px] p-[30px] justify-center items-center gap-[8px] rounded-[20px] transition relative ${
               isLoading 
-                ? 'bg-[#BCCCDC] cursor-not-allowed'
-                : 'bg-[#D9EAFD] hover:bg-[#BCCCDC]'
-            } text-black`}
+                ? 'cursor-not-allowed'
+                : 'hover:opacity-90'
+            }`}
+            style={{
+              background: 'rgba(72, 86, 105, 0.80)',
+              boxShadow: '0 0 20px 0 #20212B',
+              color: '#FFF',
+              fontFamily: 'Pretendard',
+              fontSize: '30px',
+              fontWeight: 600,
+              lineHeight: '140%',
+              marginTop: '107px'
+            }}
             onClick={handleGenerate}
             disabled={isLoading}
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
                 <svg
-                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
