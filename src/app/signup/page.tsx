@@ -9,6 +9,7 @@ import { AxiosError } from "axios";
 import { ApiResponse } from "@/types/auth";
 import UniversitySearchModal from "@/components/UniversitySearchModal";
 import MajorSearchModal from "@/components/MajorSearchModal";
+import CustomInput from "@/components/CustomInput";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -197,25 +198,16 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#D9EAFD] to-[#F8FAFC] relative">
-      <div 
-        className="absolute inset-0 w-full h-full"
-        style={{
-          backgroundImage: 'url("/background.gif")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          opacity: '0.3',
-        }}
-      />
+    <div className="min-h-screen bg-black relative -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-32 xl:-mx-[120px] -my-6 sm:-my-8 md:-my-12 lg:-my-16 xl:-my-[24px] -mb-16 sm:-mb-20 md:-mb-32 lg:-mb-40 xl:-mb-[180px]">
+      {/* 뒤로가기 버튼 */}
       <Link 
         href="/"
-        className="absolute top-6 left-6 text-black hover:text-[#BCCCDC] transition-colors z-50"
+        className="absolute top-6 left-6 flex w-[40px] px-[11px] py-3 justify-center items-center gap-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-50"
       >
         <svg 
-          className="w-6 h-6" 
+          className="w-4 h-4" 
           fill="none" 
-          stroke="currentColor" 
+          stroke="white" 
           viewBox="0 0 24 24"
         >
           <path 
@@ -228,206 +220,142 @@ export default function SignupPage() {
       </Link>
 
       <div className="flex items-center justify-center min-h-screen py-12 relative z-10">
-        <div className="bg-white p-8 shadow-lg w-full max-w-md rounded-lg">
-          <h1 className="text-4xl font-bold text-center text-black mb-8">회원가입</h1>
+        <div className="flex flex-col items-center text-center">
+          <h1 className="text-white font-[Pretendard] text-[30px] lg:text-[40px] font-semibold leading-normal mb-8">회원가입</h1>
           
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
-                이메일 <span className="text-black/50">*</span>
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 bg-white border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50"
-                  placeholder="your@email.com"
-                  required
-                  disabled={isEmailVerified}
-                />
-                <button
-                  type="button"
-                  onClick={handleSendVerification}
-                  disabled={isEmailVerified || sendVerification.isPending}
-                  className="px-4 py-2 bg-[#D9EAFD] text-black rounded-lg hover:bg-[#BCCCDC] transition whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {sendVerification.isPending ? "전송 중..." : "인증번호 전송"}
-                </button>
-              </div>
-            </div>
+          <form className="flex flex-col items-center gap-6 mb-8" onSubmit={handleSubmit}>
+            <CustomInput
+              label="이메일"
+              type="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="your@email.com"
+              required
+              button={{
+                text: sendVerification.isPending ? "전송 중..." : "인증번호 전송",
+                onClick: handleSendVerification,
+                disabled: isEmailVerified || sendVerification.isPending
+              }}
+            />
 
-            <div>
-              <label htmlFor="verificationCode" className="block text-sm font-medium text-black mb-2">
-                인증번호 <span className="text-black/50">*</span>
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  id="verificationCode"
-                  value={formData.verificationCode}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 bg-white border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50"
-                  placeholder="인증번호"
-                  required
-                  disabled={isEmailVerified}
-                  maxLength={36}
-                />
-                <button
-                  type="button"
-                  onClick={handleVerifyEmail}
-                  disabled={isEmailVerified || verifyEmail.isPending}
-                  className="px-4 py-2 bg-[#D9EAFD] text-black rounded-lg hover:bg-[#BCCCDC] transition whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {verifyEmail.isPending ? "확인 중..." : "확인"}
-                </button>
-              </div>
-            </div>
+            <CustomInput
+              label="인증번호"
+              type="text"
+              id="verificationCode"
+              value={formData.verificationCode}
+              onChange={handleChange}
+              placeholder="인증번호"
+              required
+              button={{
+                text: verifyEmail.isPending ? "확인 중..." : "확인",
+                onClick: handleVerifyEmail,
+                disabled: isEmailVerified || verifyEmail.isPending
+              }}
+            />
 
-            <div>
-              <label htmlFor="nickname" className="block text-sm font-medium text-black mb-2">
-                닉네임 <span className="text-black/50">*</span>
-              </label>
-              <input
-                type="text"
-                id="nickname"
-                value={formData.nickname}
-                onChange={handleChange}
-                className="w-full px-4 py-2 bg-white border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50"
-                placeholder="닉네임을 입력해주세요"
-                required
-              />
-            </div>
+            <CustomInput
+              label="닉네임"
+              type="text"
+              id="nickname"
+              value={formData.nickname}
+              onChange={handleChange}
+              placeholder="닉네임을 입력해주세요"
+              required
+            />
             
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-black mb-2">
-                비밀번호 <span className="text-black/50">*</span>
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={formData.password}
-                onChange={handleChange}
-                className={`w-full px-4 py-2 bg-white border rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50 ${
-                  formData.password ? (passwordValidation.isValid ? 'border-green-500' : 'border-red-500') : 'border-[#BCCCDC]'
-                }`}
-                placeholder="비밀번호를 입력해주세요"
-                required
-              />
-              {formData.password && (
-                <div className="mt-2 space-y-1">
-                  <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasMinLength ? 'text-green-600' : 'text-red-600'}`}>
-                    <span>{passwordValidation.hasMinLength ? '✓' : '✗'}</span>
-                    최소 8자 이상
-                  </div>
-                  <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasLetter ? 'text-green-600' : 'text-red-600'}`}>
-                    <span>{passwordValidation.hasLetter ? '✓' : '✗'}</span>
-                    영문 포함
-                  </div>
-                  <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasNumber ? 'text-green-600' : 'text-red-600'}`}>
-                    <span>{passwordValidation.hasNumber ? '✓' : '✗'}</span>
-                    숫자 포함
-                  </div>
-                  <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasSpecialChar ? 'text-green-600' : 'text-red-600'}`}>
-                    <span>{passwordValidation.hasSpecialChar ? '✓' : '✗'}</span>
-                    특수문자 포함 (!@#$%^&*(),.?&quot;:{}|&lt;&gt;)
-                  </div>
+            <CustomInput
+              label="비밀번호"
+              type="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="비밀번호를 입력해주세요"
+              required
+            />
+
+            <CustomInput
+              label="비밀번호 확인"
+              type="password"
+              id="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="비밀번호를 다시 입력해주세요"
+              required
+            />
+
+            {/* 비밀번호 검증 표시 */}
+            {formData.password && (
+              <div className="flex flex-col items-start gap-2 mt-4 w-[328px]">
+                <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasMinLength ? 'text-green-400' : 'text-red-400'}`}>
+                  <span>{passwordValidation.hasMinLength ? '✓' : '✗'}</span>
+                  최소 8자 이상
                 </div>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-black mb-2">
-                비밀번호 확인 <span className="text-black/50">*</span>
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="w-full px-4 py-2 bg-white border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50"
-                placeholder="비밀번호를 다시 입력해주세요"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="university" className="block text-sm font-medium text-black mb-2">
-                대학교 <span className="text-black/50">(선택)</span>
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  id="university"
-                  value={formData.university}
-                  onChange={handleChange}
-                  className="flex-1 px-4 py-2 bg-white border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50"
-                  placeholder="대학교를 입력해주세요"
-                  readOnly
-                />
-                <button
-                  type="button"
-                  onClick={() => setIsUniversityModalOpen(true)}
-                  className="px-4 py-2 bg-[#D9EAFD] text-black rounded-lg hover:bg-[#BCCCDC] transition whitespace-nowrap"
-                >
-                  검색
-                </button>
+                <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasLetter ? 'text-green-400' : 'text-red-400'}`}>
+                  <span>{passwordValidation.hasLetter ? '✓' : '✗'}</span>
+                  영문 포함
+                </div>
+                <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasNumber ? 'text-green-400' : 'text-red-400'}`}>
+                  <span>{passwordValidation.hasNumber ? '✓' : '✗'}</span>
+                  숫자 포함
+                </div>
+                <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasSpecialChar ? 'text-green-400' : 'text-red-400'}`}>
+                  <span>{passwordValidation.hasSpecialChar ? '✓' : '✗'}</span>
+                  특수문자 포함
+                </div>
               </div>
-            </div>
+            )}
 
-            <div>
-              <label htmlFor="major" className="block text-sm font-medium text-black mb-2">
-                학과 <span className="text-black/50">(선택)</span>
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  id="major"
-                  value={formData.major}
-                  onChange={handleChange}
-                  className="flex-1 px-4 py-2 bg-white border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50"
-                  placeholder="학과를 입력해주세요"
-                  readOnly
-                />
-                <button
-                  type="button"
-                  onClick={() => setIsMajorModalOpen(true)}
-                  disabled={!formData.universityId}
-                  className="px-4 py-2 bg-[#D9EAFD] text-black rounded-lg hover:bg-[#BCCCDC] transition whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  검색
-                </button>
-              </div>
-            </div>
+            <CustomInput
+              label="대학교"
+              type="text"
+              id="university"
+              value={formData.university}
+              onChange={handleChange}
+              placeholder="대학교를 입력해주세요"
+              button={{
+                text: "검색",
+                onClick: () => setIsUniversityModalOpen(true),
+                disabled: false
+              }}
+            />
 
-            <div>
-              <label htmlFor="referralCode" className="block text-sm font-medium text-black mb-2">
-                추천인 코드 <span className="text-black/50">(선택)</span>
-              </label>
-              <input
-                type="text"
-                id="referralCode"
-                value={formData.referralCode}
-                onChange={handleChange}
-                className="w-full px-4 py-2 bg-white border border-[#BCCCDC] rounded-lg focus:ring-2 focus:ring-[#D9EAFD] focus:border-transparent text-black placeholder-black/50"
-                placeholder="추천인 코드를 입력해주세요"
-              />
-            </div>
+            <CustomInput
+              label="학과"
+              type="text"
+              id="major"
+              value={formData.major}
+              onChange={handleChange}
+              placeholder="학과를 입력해주세요"
+              button={{
+                text: "검색",
+                onClick: () => setIsMajorModalOpen(true),
+                disabled: !formData.universityId
+              }}
+            />
+
+            <CustomInput
+              label="추천인 코드"
+              type="text"
+              id="referralCode"
+              value={formData.referralCode}
+              onChange={handleChange}
+              placeholder="추천인 코드를 입력해주세요"
+            />
 
             <button
               type="submit"
               disabled={!isEmailVerified || register.isPending}
-              className="w-full bg-[#D9EAFD] text-black py-3 rounded-lg hover:bg-[#BCCCDC] transition mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex w-[328px] h-[41px] px-[24.957px] justify-center items-center flex-shrink-0 rounded-[10px] bg-black shadow-[0_0_10px_0_rgba(255,255,255,0.70)] text-white font-[Pretendard] text-base font-semibold leading-[140%] hover:bg-black/90 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {register.isPending ? "처리 중..." : "회원가입"}
             </button>
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-black">
+            <p className="text-white">
               이미 계정이 있으신가요?{" "}
-              <Link href="/login" className="text-black hover:text-[#BCCCDC] transition">
+              <Link href="/login" className="text-white underline hover:text-white/80 transition">
                 로그인
               </Link>
             </p>
