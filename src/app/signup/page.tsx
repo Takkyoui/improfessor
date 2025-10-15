@@ -199,7 +199,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black relative -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-32 xl:-mx-[120px] -my-6 sm:-my-8 md:-my-12 lg:-my-16 xl:-my-[24px] -mb-16 sm:-mb-20 md:-mb-32 lg:-mb-40 xl:-mb-[180px]">
+    <div className="fixed inset-0 bg-black z-50 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen py-12 relative z-10">
         <div className="flex flex-col items-center text-center">
           <div className="relative w-full flex items-center justify-center mb-8">

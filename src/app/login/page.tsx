@@ -63,7 +63,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black relative -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-32 xl:-mx-[120px] -my-6 sm:-my-8 md:-my-12 lg:-my-16 xl:-my-[24px] -mb-16 sm:-mb-20 md:-mb-32 lg:-mb-40 xl:-mb-[180px]">
+    <div className="fixed inset-0 bg-black z-50">
       <div className="flex items-center justify-center min-h-screen relative z-10">
         <div className="flex flex-col items-center text-center">
           <div className="relative w-full flex items-center justify-center mb-8">
@@ -153,7 +153,7 @@ export default function LoginPage() {
           <div className="mb-8">
             <a
               href={kakaoUrl}
-              className="flex w-[260px] lg:w-[328px] h-[41px] px-[32px] lg:px-[49.913px] justify-center items-center gap-[14.261px] flex-shrink-0 rounded-[10px] bg-[#FEE500] hover:brightness-95 transition"
+              className="flex w-[300px] h-[41px] px-10 justify-center items-center gap-3 flex-shrink-0 rounded-[10px] bg-[#FEE500] hover:brightness-95 transition"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                 <g clipPath="url(#clip0_206_288)">
