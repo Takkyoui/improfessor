@@ -10,6 +10,7 @@ import { ApiResponse } from "@/types/auth";
 import UniversitySearchModal from "@/components/UniversitySearchModal";
 import MajorSearchModal from "@/components/MajorSearchModal";
 import CustomInput from "@/components/CustomInput";
+import CustomInputMobile from "@/components/CustomInputMobile";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -199,94 +200,166 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen bg-black relative -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-32 xl:-mx-[120px] -my-6 sm:-my-8 md:-my-12 lg:-my-16 xl:-my-[24px] -mb-16 sm:-mb-20 md:-mb-32 lg:-mb-40 xl:-mb-[180px]">
-      {/* 뒤로가기 버튼 */}
-      <Link 
-        href="/"
-        className="absolute top-6 left-6 flex w-[40px] px-[11px] py-3 justify-center items-center gap-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-50"
-      >
-        <svg 
-          className="w-4 h-4" 
-          fill="none" 
-          stroke="white" 
-          viewBox="0 0 24 24"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={2} 
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-      </Link>
-
       <div className="flex items-center justify-center min-h-screen py-12 relative z-10">
         <div className="flex flex-col items-center text-center">
-          <h1 className="text-white font-[Pretendard] text-[30px] lg:text-[40px] font-semibold leading-normal mb-8">회원가입</h1>
+          <div className="relative w-full flex items-center justify-center mb-8">
+            <Link 
+              href="/"
+              className="absolute left-[46px] lg:left-6 flex w-[40px] px-[11px] py-3 justify-center items-center gap-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-50"
+            >
+              <svg 
+                className="w-4 h-4" 
+                fill="none" 
+                stroke="white" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </Link>
+            <h1 className="text-white font-[Pretendard] text-[30px] lg:text-[40px] font-semibold leading-normal">회원가입</h1>
+          </div>
           
           <form className="flex flex-col items-center gap-6 mb-8" onSubmit={handleSubmit}>
-            <CustomInput
-              label="이메일"
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="your@email.com"
-              required
-              button={{
-                text: sendVerification.isPending ? "전송 중..." : "인증번호 전송",
-                onClick: handleSendVerification,
-                disabled: isEmailVerified || sendVerification.isPending
-              }}
-            />
+            {/* 모바일 버전 */}
+            <div className="lg:hidden flex flex-col gap-6 w-full">
+              <CustomInputMobile
+                label="이메일"
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="your@email.com"
+                required
+                button={{
+                  text: sendVerification.isPending ? "전송 중..." : "인증번호 전송",
+                  onClick: handleSendVerification,
+                  disabled: isEmailVerified || sendVerification.isPending
+                }}
+              />
 
-            <CustomInput
-              label="인증번호"
-              type="text"
-              id="verificationCode"
-              value={formData.verificationCode}
-              onChange={handleChange}
-              placeholder="인증번호"
-              required
-              button={{
-                text: verifyEmail.isPending ? "확인 중..." : "확인",
-                onClick: handleVerifyEmail,
-                disabled: isEmailVerified || verifyEmail.isPending
-              }}
-            />
+              <CustomInputMobile
+                label="인증번호"
+                type="text"
+                id="verificationCode"
+                value={formData.verificationCode}
+                onChange={handleChange}
+                placeholder="인증번호"
+                required
+                button={{
+                  text: verifyEmail.isPending ? "확인 중..." : "확인",
+                  onClick: handleVerifyEmail,
+                  disabled: isEmailVerified || verifyEmail.isPending
+                }}
+              />
 
-            <CustomInput
-              label="닉네임"
-              type="text"
-              id="nickname"
-              value={formData.nickname}
-              onChange={handleChange}
-              placeholder="닉네임을 입력해주세요"
-              required
-            />
+              <CustomInputMobile
+                label="닉네임"
+                type="text"
+                id="nickname"
+                value={formData.nickname}
+                onChange={handleChange}
+                placeholder="닉네임을 입력해주세요"
+                required
+              />
+            </div>
             
-            <CustomInput
-              label="비밀번호"
-              type="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="비밀번호를 입력해주세요"
-              required
-            />
+            {/* PC 버전 */}
+            <div className="hidden lg:flex flex-col items-center gap-6">
+              <CustomInput
+                label="이메일"
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="your@email.com"
+                required
+                button={{
+                  text: sendVerification.isPending ? "전송 중..." : "인증번호 전송",
+                  onClick: handleSendVerification,
+                  disabled: isEmailVerified || sendVerification.isPending
+                }}
+              />
 
-            <CustomInput
-              label="비밀번호 확인"
-              type="password"
-              id="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="비밀번호를 다시 입력해주세요"
-              required
-            />
+              <CustomInput
+                label="인증번호"
+                type="text"
+                id="verificationCode"
+                value={formData.verificationCode}
+                onChange={handleChange}
+                placeholder="인증번호"
+                required
+                button={{
+                  text: verifyEmail.isPending ? "확인 중..." : "확인",
+                  onClick: handleVerifyEmail,
+                  disabled: isEmailVerified || verifyEmail.isPending
+                }}
+              />
+
+              <CustomInput
+                label="닉네임"
+                type="text"
+                id="nickname"
+                value={formData.nickname}
+                onChange={handleChange}
+                placeholder="닉네임을 입력해주세요"
+                required
+              />
+            </div>
+            
+            {/* 비밀번호 필드들 - 모바일 버전 */}
+            <div className="lg:hidden flex flex-col gap-6 w-full">
+              <CustomInputMobile
+                label="비밀번호"
+                type="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="비밀번호를 입력해주세요"
+                required
+              />
+
+              <CustomInputMobile
+                label="비밀번호 확인"
+                type="password"
+                id="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="비밀번호를 다시 입력해주세요"
+                required
+              />
+            </div>
+            
+            {/* 비밀번호 필드들 - PC 버전 */}
+            <div className="hidden lg:flex flex-col items-center gap-6">
+              <CustomInput
+                label="비밀번호"
+                type="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="비밀번호를 입력해주세요"
+                required
+              />
+
+              <CustomInput
+                label="비밀번호 확인"
+                type="password"
+                id="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="비밀번호를 다시 입력해주세요"
+                required
+              />
+            </div>
 
             {/* 비밀번호 검증 표시 */}
             {formData.password && (
-              <div className="flex flex-col items-start gap-2 mt-4 w-[328px]">
+              <div className="flex flex-col items-start gap-2 mt-4 w-[300px] lg:w-[328px]">
                 <div className={`text-xs flex items-center gap-1 ${passwordValidation.hasMinLength ? 'text-green-400' : 'text-red-400'}`}>
                   <span>{passwordValidation.hasMinLength ? '✓' : '✗'}</span>
                   최소 8자 이상
@@ -306,50 +379,95 @@ export default function SignupPage() {
               </div>
             )}
 
-            <CustomInput
-              label="대학교"
-              type="text"
-              id="university"
-              value={formData.university}
-              onChange={handleChange}
-              placeholder="대학교를 입력해주세요"
-              button={{
-                text: "검색",
-                onClick: () => setIsUniversityModalOpen(true),
-                disabled: false
-              }}
-            />
+            {/* 나머지 필드들 - 모바일 버전 */}
+            <div className="lg:hidden flex flex-col gap-6 w-full">
+              <CustomInputMobile
+                label="대학교"
+                type="text"
+                id="university"
+                value={formData.university}
+                onChange={handleChange}
+                placeholder="대학교를 입력해주세요"
+                button={{
+                  text: "검색",
+                  onClick: () => setIsUniversityModalOpen(true),
+                  disabled: false
+                }}
+              />
 
-            <CustomInput
-              label="학과"
-              type="text"
-              id="major"
-              value={formData.major}
-              onChange={handleChange}
-              placeholder="학과를 입력해주세요"
-              button={{
-                text: "검색",
-                onClick: () => setIsMajorModalOpen(true),
-                disabled: !formData.universityId
-              }}
-            />
+              <CustomInputMobile
+                label="학과"
+                type="text"
+                id="major"
+                value={formData.major}
+                onChange={handleChange}
+                placeholder="학과를 입력해주세요"
+                button={{
+                  text: "검색",
+                  onClick: () => setIsMajorModalOpen(true),
+                  disabled: !formData.universityId
+                }}
+              />
 
-            <CustomInput
-              label="추천인 코드"
-              type="text"
-              id="referralCode"
-              value={formData.referralCode}
-              onChange={handleChange}
-              placeholder="추천인 코드를 입력해주세요"
-            />
+              <CustomInputMobile
+                label="추천인 코드"
+                type="text"
+                id="referralCode"
+                value={formData.referralCode}
+                onChange={handleChange}
+                placeholder="추천인 코드를 입력해주세요"
+              />
+            </div>
+            
+            {/* 나머지 필드들 - PC 버전 */}
+            <div className="hidden lg:flex flex-col items-center gap-6">
+              <CustomInput
+                label="대학교"
+                type="text"
+                id="university"
+                value={formData.university}
+                onChange={handleChange}
+                placeholder="대학교를 입력해주세요"
+                button={{
+                  text: "검색",
+                  onClick: () => setIsUniversityModalOpen(true),
+                  disabled: false
+                }}
+              />
 
-            <button
+              <CustomInput
+                label="학과"
+                type="text"
+                id="major"
+                value={formData.major}
+                onChange={handleChange}
+                placeholder="학과를 입력해주세요"
+                button={{
+                  text: "검색",
+                  onClick: () => setIsMajorModalOpen(true),
+                  disabled: !formData.universityId
+                }}
+              />
+
+              <CustomInput
+                label="추천인 코드"
+                type="text"
+                id="referralCode"
+                value={formData.referralCode}
+                onChange={handleChange}
+                placeholder="추천인 코드를 입력해주세요"
+              />
+            </div>
+
+            <div className="mt-[50px] lg:mt-6">
+              <button
               type="submit"
               disabled={!isEmailVerified || register.isPending}
-              className="flex w-[328px] h-[41px] px-[24.957px] justify-center items-center flex-shrink-0 rounded-[10px] bg-black shadow-[0_0_10px_0_rgba(255,255,255,0.70)] text-white font-[Pretendard] text-base font-semibold leading-[140%] hover:bg-black/90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex w-[300px] lg:w-[328px] h-[40px] lg:h-[41px] px-[24.957px] justify-center items-center flex-shrink-0 rounded-[8px] lg:rounded-[10px] bg-black shadow-[0_0_10px_0_rgba(255,255,255,0.70)] text-white font-[Pretendard] text-base font-semibold leading-[140%] hover:bg-black/90 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {register.isPending ? "처리 중..." : "회원가입"}
-            </button>
+              </button>
+            </div>
           </form>
 
           <div className="mt-6 text-center">

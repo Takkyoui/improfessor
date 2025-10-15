@@ -8,6 +8,7 @@ import { useAlert } from "@/context/AlertContext";
 import { AxiosError } from "axios";
 import { ApiResponse } from "@/types/auth";
 import CustomInput from "@/components/CustomInput";
+import CustomInputMobile from "@/components/CustomInputMobile";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -63,54 +64,79 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-black relative -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-32 xl:-mx-[120px] -my-6 sm:-my-8 md:-my-12 lg:-my-16 xl:-my-[24px] -mb-16 sm:-mb-20 md:-mb-32 lg:-mb-40 xl:-mb-[180px]">
-      {/* 뒤로가기 버튼 */}
-      <Link 
-        href="/"
-        className="absolute top-6 left-6 flex w-[40px] px-[11px] py-3 justify-center items-center gap-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-50"
-      >
-        <svg 
-          className="w-4 h-4" 
-          fill="none" 
-          stroke="white" 
-          viewBox="0 0 24 24"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={2} 
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-      </Link>
-      
       <div className="flex items-center justify-center min-h-screen relative z-10">
         <div className="flex flex-col items-center text-center">
-          <h1 className="text-white font-[Pretendard] text-[30px] lg:text-[40px] font-semibold leading-normal mb-8">로그인</h1>
+          <div className="relative w-full flex items-center justify-center mb-8">
+            <Link 
+              href="/"
+              className="absolute left-[46px] lg:left-6 flex w-[40px] px-[11px] py-3 justify-center items-center gap-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-50"
+            >
+              <svg 
+                className="w-4 h-4" 
+                fill="none" 
+                stroke="white" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </Link>
+            <h1 className="text-white font-[Pretendard] text-[30px] lg:text-[40px] font-semibold leading-normal">로그인</h1>
+          </div>
 
           {/* 이메일/비밀번호 입력 */}
           <form className="flex flex-col items-center gap-6 mb-8" onSubmit={handleSubmit}>
-            <CustomInput
-              label="ID"
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="아이디를 입력하세요"
-              required
-            />
-            <CustomInput
-              label="PW"
-              type="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="비밀번호를 입력하세요"
-              required
-            />
+            {/* 모바일 버전 */}
+            <div className="lg:hidden flex flex-col gap-6 w-full">
+              <CustomInputMobile
+                label="ID"
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="아이디를 입력하세요"
+                required
+              />
+              <CustomInputMobile
+                label="PW"
+                type="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="비밀번호를 입력하세요"
+                required
+              />
+            </div>
+            
+            {/* PC 버전 */}
+            <div className="hidden lg:flex flex-col items-center gap-6">
+              <CustomInput
+                label="ID"
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="아이디를 입력하세요"
+                required
+              />
+              <CustomInput
+                label="PW"
+                type="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="비밀번호를 입력하세요"
+                required
+              />
+            </div>
             <button
               type="submit"
               disabled={login.isPending}
-              className="flex w-[328px] h-[41px] px-[24.957px] justify-center items-center flex-shrink-0 rounded-[10px] bg-black shadow-[0_0_10px_0_rgba(255,255,255,0.70)] text-white font-[Pretendard] text-base font-semibold leading-[140%] hover:bg-black/90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex w-[300px] lg:w-[328px] h-[40px] lg:h-[41px] px-[24.957px] justify-center items-center flex-shrink-0 rounded-[8px] lg:rounded-[10px] bg-black shadow-[0_0_10px_0_rgba(255,255,255,0.70)] text-white font-[Pretendard] text-base font-semibold leading-[140%] hover:bg-black/90 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {login.isPending ? "로그인 중..." : "로그인"}
             </button>
