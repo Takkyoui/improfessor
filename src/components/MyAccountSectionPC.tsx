@@ -94,7 +94,7 @@ export default function MyAccountSectionPC() {
         {/* 사용자 정보 섹션 - PC */}
         <div className="inline-flex pl-10 flex-col justify-center items-start gap-[49px]">
           {/* 사용자 정보들 - PC */}
-          <div className="flex items-center gap-5 self-stretch">
+          <div className="flex flex-col gap-5 self-stretch">
             {/* 사용자 이메일 */}
             <div className="flex items-center gap-5">
               <label className="text-sm font-medium text-white whitespace-nowrap w-[120px]">사용자 이메일</label>
