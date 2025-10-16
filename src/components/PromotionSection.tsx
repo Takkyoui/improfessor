@@ -68,7 +68,7 @@ export default function PromotionSection() {
       </p>
 
       {/* 추천인 코드 섹션 - 반응형 배치 */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:gap-[40px] lg:self-stretch lg:justify-between">
+      <div className="flex flex-col items-center gap-[42px] lg:flex-row lg:items-center lg:gap-[40px] lg:self-stretch lg:justify-between">
         {/* 내 추천인 코드 */}
         <div className="inline-flex h-[50px] lg:h-[82px] px-5 lg:px-5 justify-center items-center gap-8 lg:gap-8 flex-shrink-0 w-[259px] lg:w-[315px] rounded-[6px] lg:rounded-[10px] border border-white">
           <span className="text-white font-pretendard text-base font-normal leading-[140%] lg:text-[18px]">내 추천인 코드</span>
@@ -76,7 +76,7 @@ export default function PromotionSection() {
         </div>
 
         {/* 추천인 코드 입력 */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 items-center">
           <label className="text-white font-pretendard text-sm lg:text-lg font-normal leading-[140%]">추천인 코드 입력</label>
           <div className="flex gap-2">
             <input
