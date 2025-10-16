@@ -7,7 +7,7 @@ export const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 60000, // 1분 타임아웃 추가
+  timeout: 90000, // 1분 타임아웃 추가
 });
 
 // 요청 인터셉터
