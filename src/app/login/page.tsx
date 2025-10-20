@@ -64,6 +64,15 @@ export default function LoginPage() {
 
   return (
     <div className="fixed inset-0 bg-black z-50">
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: 'url("/background.gif")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
       <div className="flex items-center justify-center min-h-screen relative z-10">
         <div className="flex flex-col items-center text-center">
           <div className="relative w-full flex items-center justify-center mb-8">
